@@ -77,8 +77,10 @@ else
     exit 1
 fi
 
-# Copy binary to user's local bin
+# Copy binary and GUI wrapper to user's local bin
 cp target/release/spacecleaner "$INSTALL_DIR/"
+cp spacecleaner-gui.sh "$INSTALL_DIR/spacecleaner-gui"
+chmod +x "$INSTALL_DIR/spacecleaner-gui"
 
 echo ""
 echo "📦 Installing SpaceCleaner to $INSTALL_DIR..."
@@ -169,6 +171,7 @@ echo "💡 Common Commands:"
 echo "   spacecleaner              # Interactive mode"
 echo "   spacecleaner scan         # Check storage usage"  
 echo "   spacecleaner quick        # Quick safe cleanup"
+echo "   spacecleaner-gui          # GUI mode (macOS dialogs)"
 echo "   spacecleaner --help       # Show all options"
 echo ""
 echo "🛡️  Always run 'spacecleaner --dry-run' first to preview changes!"
