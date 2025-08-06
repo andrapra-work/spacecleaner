@@ -46,6 +46,22 @@ fi
 INSTALL_DIR="$HOME/.local/bin"
 mkdir -p "$INSTALL_DIR"
 
+# Clone SpaceCleaner repository
+echo "📥 Downloading SpaceCleaner source code..."
+TEMP_DIR="/tmp/spacecleaner-install-$$"
+git clone https://github.com/andrapra-work/spacecleaner.git "$TEMP_DIR"
+
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to download SpaceCleaner. Please check your internet connection."
+    exit 1
+fi
+
+echo "✅ Source code downloaded!"
+echo ""
+
+# Change to SpaceCleaner directory
+cd "$TEMP_DIR"
+
 # Build SpaceCleaner
 echo "🔨 Building SpaceCleaner..."
 echo "This may take a few minutes on first install..."
@@ -66,6 +82,11 @@ cp target/release/spacecleaner "$INSTALL_DIR/"
 
 echo ""
 echo "📦 Installing SpaceCleaner to $INSTALL_DIR..."
+
+# Cleanup temporary directory
+echo "🧹 Cleaning up temporary files..."
+cd "$HOME"
+rm -rf "$TEMP_DIR"
 
 # Add to PATH if not already there
 SHELL_RC=""
