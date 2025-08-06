@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🧹 SpaceCleaner - Easy Storage Cleanup Tool"
+echo "🧹 SpaceCleaner - Easy Storage Cleanup Tool (v2)"
 echo "============================================="
 echo ""
 
