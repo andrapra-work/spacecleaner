@@ -1,192 +1,128 @@
 # 🧹 SpaceCleaner
 
-**Fast storage cleanup tool for macOS and Linux**
+**Free up space on your Mac or Linux computer - Fast & Safe!**
 
-SpaceCleaner is a blazing-fast command-line tool written in Rust that helps you reclaim disk space by cleaning various cache directories and unused files safely.
-
-## ✨ Features
-
-- **🚀 Blazing Fast**: Built in Rust with parallel directory scanning
-- **🎯 Interactive Mode**: Menu-driven interface for guided cleanup
-- **🔍 Dry Run Mode**: Preview what will be deleted before actually deleting
-- **🐳 Docker Integration**: Clean Docker images, containers, and build cache
-- **🗂️ Comprehensive Cache Cleaning**: Supports 15+ different cache types
-- **📊 Storage Analysis**: Detailed breakdown of disk usage
-- **🛡️ Safety First**: Conservative defaults and confirmation prompts
-
-## 📦 Installation
-
-### Build from source (recommended)
-
-```bash
-# Clone and build
-cd ~/Code/spacecleaner
-cargo build --release
-
-# Install to PATH
-cargo install --path .
-```
-
-### Direct execution
-```bash
-cd ~/Code/spacecleaner
-cargo run -- --help
-```
-
-## 🚀 Usage
-
-### Commands
-
-```bash
-# Interactive mode (default)
-spacecleaner
-
-# Scan current storage usage
-spacecleaner scan
-
-# Quick cleanup of safe caches
-spacecleaner quick
-
-# Clean all cache directories
-spacecleaner caches
-
-# Docker-specific cleanup
-spacecleaner docker
-
-# Dry run mode (preview only)
-spacecleaner --dry-run
-
-# Skip confirmations
-spacecleaner --yes quick
-```
-
-### Interactive Mode
-
-The interactive mode provides a menu-driven interface:
-
-```
-🎯 Interactive Cleanup Mode
-
-What would you like to do?
-> 📊 Scan storage usage
-  🚀 Quick cleanup (safe caches)
-  🗂️  Clean all caches
-  🐳 Docker cleanup
-  🎯 Custom cleanup menu
-  ❌ Exit
-```
-
-## 🧹 What It Cleans
-
-### Safe Caches (Quick Cleanup)
-- **Homebrew Cache**: Package manager cache
-- **pip Cache**: Python package cache
-- **npm Cache**: Node.js package cache
-- **Composer Cache**: PHP package cache  
-- **node-gyp Cache**: Node.js build cache
-
-### All Cache Cleanup
-- All of the above plus:
-- **Playwright Cache**: Browser automation cache
-- **Browser Caches**: Chrome, Safari, Firefox (when closed)
-- **System Temp Files**: Old temporary files (7+ days)
-- **Development Caches**: Gradle, Maven, Cargo, Go modules
-
-### Docker Cleanup
-- **Unused Images**: Dangling and unused images
-- **Stopped Containers**: Non-running containers
-- **Unused Volumes**: Unattached volumes (optional)
-- **Build Cache**: Docker build cache
-
-## 📊 Example Output
-
-```bash
-$ spacecleaner scan
-
-🧹 SpaceCleaner - Fast Storage Cleanup Tool
-
-📊 Analyzing Storage Usage...
-
-💾 Disk Usage:
-  Total:     228 GiB
-  Used:      138 GiB (60%)
-  Available: 55 GiB
-
-🗂️  Cache Directory Sizes:
-  .npm                      5.13 GiB
-  Caches/Google             2.98 GiB
-  .gradle                   2.50 GiB
-  Downloads                 2.32 GiB
-  node_modules              452 MiB
-  
-🐳 Docker Usage:
-  Images:     9 total, 9 active
-  Containers: 9 total, 9 running
-  Total Size: 8.17 MiB
-```
-
-## 🛡️ Safety Features
-
-- **Dry Run Mode**: Always test with `--dry-run` first
-- **Conservative Defaults**: Asks for confirmation on potentially risky operations
-- **Smart Detection**: Only cleans what can be safely regenerated
-- **Browser Safety**: Won't clean browser caches while browsers are running
-- **Selective Cleanup**: Choose exactly what to clean
-
-## 🏗️ Architecture
-
-```
-spacecleaner/
-├── src/
-│   ├── main.rs           # CLI argument parsing
-│   ├── scanner.rs        # Disk usage analysis
-│   ├── cleaners/         # Cleanup modules
-│   │   ├── caches.rs     # Cache directory cleanup
-│   │   ├── docker.rs     # Docker cleanup
-│   │   └── mod.rs        # Quick cleanup orchestration
-│   ├── ui.rs            # Interactive terminal UI
-│   └── utils.rs         # Helper functions
-```
-
-## 🚧 Platform Support
-
-- **✅ macOS**: Full support for macOS cache directories
-- **✅ Linux**: Full support for Linux cache directories  
-- **🔄 Windows**: Planned for future release
-
-## ⚡ Performance
-
-- **Parallel Scanning**: Uses tokio for concurrent directory traversal
-- **Minimal Memory**: Streaming directory iteration
-- **Fast Execution**: Rust's zero-cost abstractions
-- **Small Binary**: ~2MB executable
-
-## 📝 License
-
-MIT License - feel free to use and modify!
-
-## 🤝 Contributing
-
-1. Fork the repository at [github.com/andrapra-work/spacecleaner](https://github.com/andrapra-work/spacecleaner)
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 👨‍💻 Author
-
-Created by **Andra Pradana Ardiansyah** ([@andrapra-work](https://github.com/andrapra-work))
-
-## 🔗 Related Tools
-
-- [Docker System Prune](https://docs.docker.com/config/pruning/)
-- [Homebrew Cleanup](https://docs.brew.sh/Manpage#cleanup-options-formulae)
-- [npm cache clean](https://docs.npmjs.com/cli/v8/commands/npm-cache)
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
+SpaceCleaner helps you get more storage space by cleaning temporary files, caches, and unused data that's safe to delete. Perfect for everyone - no technical knowledge required!
 
 ---
 
-**⚠️ Always run with `--dry-run` first to see what will be deleted!**
+## 🚀 **Super Easy Installation**
+
+**Just copy and paste this into Terminal:**
+
+```bash
+curl -sSL https://raw.githubusercontent.com/andrapra-work/spacecleaner/main/install.sh | bash
+```
+
+That's it! ✅ SpaceCleaner will be installed and ready to use.
+
+---
+
+## 💻 **How to Use**
+
+### **🖱️ For Beginners (Point & Click)**
+After installation, look for **SpaceCleaner.app** on your Desktop and double-click it!
+
+### **⌨️ For Everyone (Simple Commands)**
+
+Open Terminal and type these simple commands:
+
+```bash
+# See how much space you can free up
+spacecleaner scan
+
+# Clean safe files (perfect for beginners)
+spacecleaner quick
+
+# Choose exactly what to clean
+spacecleaner
+
+# Preview what would happen (totally safe!)
+spacecleaner --dry-run
+```
+
+---
+
+## 🎯 **What You Can Do**
+
+### **📊 Check Your Storage**
+- See how much space you're using
+- Find out what's taking up space
+- Get a detailed breakdown of cache files
+
+### **🧹 Clean Your Computer**
+- **Quick Clean**: Remove safe temporary files (recommended for beginners)
+- **Select Specific Files**: Choose exactly what to clean (like old app caches)
+- **Clean Everything**: Deep clean all cache directories
+- **Docker Clean**: Clean up Docker files (for developers)
+
+### **🛡️ Stay Safe**
+- **Preview First**: See what will be deleted before doing it
+- **No Important Files**: Never touches your photos, documents, or apps
+- **Easy Undo**: Everything cleaned can be recreated automatically
+
+---
+
+## ✅ **What Gets Cleaned**
+
+### **🟢 Always Safe to Clean**
+- **Browser cache files** (Chrome, Safari, Firefox temporary files)
+- **App caches** (they rebuild automatically when you use the apps)
+- **Old installer files** and temporary downloads
+- **Build cache files** (for developers)
+
+### **🟡 You Choose What to Clean**
+- **Specific app caches** (like Music app cache, game caches)
+- **Development tools** (if you're a developer)
+- **Docker files** (if you use Docker)
+
+### **🔴 Never Touched**
+- ❌ Your photos, documents, or personal files
+- ❌ Your applications or programs
+- ❌ System files that could break your computer
+- ❌ Anything you created yourself
+
+---
+
+## 💪 **Real Results**
+
+**How much space can you expect to free up?**
+
+- 🏠 **Light users**: 1-5 GB (browser caches, basic app caches)
+- 💼 **Regular users**: 5-15 GB (more apps, larger caches)
+- 💻 **Developers**: 20-100+ GB (build caches, Docker, package managers)
+- 🎮 **Heavy users**: 10-50+ GB (games, creative apps, lots of downloads)
+
+---
+
+## ❓ **Need Help?**
+
+### **Common Questions**
+
+**Q: Is this safe to use?**  
+A: Yes! SpaceCleaner only cleans temporary files that apps can recreate. Always use `--dry-run` first to preview.
+
+**Q: Will this speed up my computer?**  
+A: Yes! Cleaning cache files and freeing up disk space often makes computers run faster.
+
+**Q: Do I need to be technical to use this?**  
+A: Not at all! Just double-click the desktop app or copy/paste simple commands.
+
+**Q: What if I accidentally delete something?**  
+A: Everything SpaceCleaner deletes can be recreated by your apps automatically.
+
+---
+
+## 👨‍💻 **About**
+
+Created by **Andra Pradana Ardiansyah** ([@andrapra-work](https://github.com/andrapra-work))
+
+**Free & Open Source** - No cost, no ads, no data collection
+
+---
+
+**⚠️ Always run `spacecleaner --dry-run` first to preview what will be cleaned!**
+
+---
+
+*Made with ❤️ to help everyone keep their computers clean and fast.*
