@@ -347,7 +347,7 @@ async fn run_selective_cache_cleanup(dry_run: bool, yes: bool) -> Result<()> {
     // Perform cleanup
     println!("\n{} Starting cleanup...", style("🧹").cyan());
     for cache_name in selected_caches {
-        let size_before = storage_info.cache_breakdown.get(cache_name).copied().unwrap_or(0);
+        let _size_before = storage_info.cache_breakdown.get(cache_name).copied().unwrap_or(0);
         let cleaned_size = cleanup_specific_cache(cache_name, dry_run).await?;
         
         if cleaned_size > 0 {

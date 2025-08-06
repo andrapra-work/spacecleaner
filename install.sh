@@ -46,13 +46,36 @@ fi
 INSTALL_DIR="$HOME/.local/bin"
 mkdir -p "$INSTALL_DIR"
 
+# Check if git is available
+if ! command -v git &> /dev/null; then
+    echo "📦 Installing Git (required for download)..."
+    if [[ "$OS" == "macos" ]]; then
+        if command -v brew &> /dev/null; then
+            brew install git
+        else
+            echo "❌ Git not found. Please install Git first:"
+            echo "   1. Install Homebrew: https://brew.sh"
+            echo "   2. Run: brew install git"
+            echo "   3. Run this installer again"
+            exit 1
+        fi
+    elif [[ "$OS" == "linux" ]]; then
+        echo "❌ Git not found. Please install it first:"
+        echo "   Ubuntu/Debian: sudo apt install git"
+        echo "   CentOS/RHEL: sudo yum install git"
+        echo "   Then run this installer again"
+        exit 1
+    fi
+fi
+
 # Clone SpaceCleaner repository
 echo "📥 Downloading SpaceCleaner source code..."
 TEMP_DIR="/tmp/spacecleaner-install-$$"
 git clone https://github.com/andrapra-work/spacecleaner.git "$TEMP_DIR"
 
 if [ $? -ne 0 ]; then
-    echo "❌ Failed to download SpaceCleaner. Please check your internet connection."
+    echo "❌ Failed to download SpaceCleaner."
+    echo "💡 Make sure you have internet connection and Git installed."
     exit 1
 fi
 
